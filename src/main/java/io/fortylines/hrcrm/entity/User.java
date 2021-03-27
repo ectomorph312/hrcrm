@@ -37,6 +37,10 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
+    public boolean isActive() {
+        return active;
+    }
+
     public boolean isAdmin() {
         return roles.contains(Role.ADMIN);
     }
@@ -73,7 +77,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isActive();
     }
-
 }

@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserMapperImpl implements UserMapper {
+public class DefaultUserMapper implements UserMapper {
 
     @Override
     public ReadUserDto toReadUserDto(User user) {

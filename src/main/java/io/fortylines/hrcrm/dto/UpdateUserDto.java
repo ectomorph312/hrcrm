@@ -16,11 +16,7 @@ public class UpdateUserDto {
     @NotNull
     private String password;
 
-    @NotNull
-    private String username;
-
-    @NotNull
-    private String active;
+    private boolean active;
 
     @NotNull
     private String roles;

@@ -3,12 +3,10 @@ package io.fortylines.hrcrm.controller;
 import io.fortylines.hrcrm.dto.CreateVacancyDto;
 import io.fortylines.hrcrm.dto.ReadVacancyDto;
 import io.fortylines.hrcrm.dto.UpdateVacancyDto;
-import io.fortylines.hrcrm.service.VacancyService;
+import io.fortylines.hrcrm.dtoService.VacancyDtoService;
+import io.fortylines.hrcrm.pageable.VacancyPageRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,34 +14,37 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/vacancies")
 public class VacancyController {
 
+    private final VacancyDtoService vacancyDtoService;
+
     @Autowired
-    private VacancyService vacancyService;
+    public VacancyController(VacancyDtoService vacancyDtoService) {
+        this.vacancyDtoService = vacancyDtoService;
+    }
 
     @GetMapping("/{id}")
-    public ReadVacancyDto getVacancyProfile(@PathVariable Long id) {
-        return vacancyService.getVacancyProfile(id);
+    public ReadVacancyDto getById(@PathVariable Long id) {
+        return vacancyDtoService.getById(id);
     }
 
-    @PostMapping("/{id}")
-    public ReadVacancyDto createNewVacancy(@PathVariable Long id,
+    @PostMapping("/{user_id}")
+    public ReadVacancyDto create(@PathVariable Long user_id,
                                            @RequestBody @Validated CreateVacancyDto createVacancyDto) {
-        return vacancyService.createNewVacancy(id, createVacancyDto);
-    }
-
-    @PutMapping("/{id}")
-    public ReadVacancyDto updateVacancy(@PathVariable Long id,
-                                        @RequestBody @Validated UpdateVacancyDto updateVacancyDto) {
-        return vacancyService.updateVacancy(id, updateVacancyDto);
-    }
-
-    @GetMapping
-    public Page<ReadVacancyDto> getAllVacancies(@PageableDefault(sort = {"created"}, direction = Sort.Direction.DESC, size = 15)
-                                                            Pageable pageable) {
-        return vacancyService.findAll(pageable);
+        return vacancyDtoService.create(user_id, createVacancyDto);
     }
 
     @DeleteMapping("{id}")
-    public void deleteVacancy(@PathVariable Long id) {
-        vacancyService.delete(id);
+    public void delete(@PathVariable Long id) {
+        vacancyDtoService.delete(id);
+    }
+
+    @GetMapping
+    public Page<ReadVacancyDto> getAll(VacancyPageRequest vacancyPageRequest) {
+        return vacancyDtoService.getAll(vacancyPageRequest);
+    }
+
+    @PutMapping("/{id}")
+    public ReadVacancyDto update(@PathVariable Long id,
+                                        @RequestBody @Validated UpdateVacancyDto updateVacancyDto) {
+        return vacancyDtoService.update(id, updateVacancyDto);
     }
 }
