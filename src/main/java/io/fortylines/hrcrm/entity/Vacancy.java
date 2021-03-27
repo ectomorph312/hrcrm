@@ -6,11 +6,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Entity
-@Table(name = "vacancy")
+@Table(name = "vacancies")
 public class Vacancy {
 
     @Id
@@ -29,27 +29,19 @@ public class Vacancy {
     @ElementCollection
     @CollectionTable(name = "vacancy_competencies", joinColumns = @JoinColumn(name = "vacancy_id"))
     @Enumerated(EnumType.STRING)
-    private Set<Competencies> competencies;
+    private List<Competencies> competencies;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd-'T'HH:mm")
-    private LocalDateTime created;
+    private LocalDateTime createdAt;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd-'T'HH:mm")
-    private LocalDateTime completed;
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd-'T'HH:mm")
-    private LocalDateTime modified;
+    private LocalDateTime updatedAt;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
 
     public Vacancy() {
-    }
-
-    public Vacancy(String title, String description) {
-        this.title = title;
-        this.description = description;
     }
 
     public String getAuthorName() {

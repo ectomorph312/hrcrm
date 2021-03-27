@@ -1,7 +1,5 @@
 package io.fortylines.hrcrm.config;
 
-import io.fortylines.hrcrm.service.Impl.UserServiceImpl;
-import io.fortylines.hrcrm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

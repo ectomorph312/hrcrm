@@ -3,46 +3,46 @@ package io.fortylines.hrcrm.controller;
 import io.fortylines.hrcrm.dto.CreateUserDto;
 import io.fortylines.hrcrm.dto.ReadUserDto;
 import io.fortylines.hrcrm.dto.UpdateUserDto;
-import io.fortylines.hrcrm.service.UserService;
+import io.fortylines.hrcrm.dtoService.UserDtoService;
+import io.fortylines.hrcrm.pageable.UserPageRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
 
+    private final UserDtoService userDtoService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserDtoService userDtoService) {
+        this.userDtoService = userDtoService;
+    }
 
     @GetMapping("/{id}")
-    public ReadUserDto getUserProfile(@PathVariable Long id) {
-        return userService.getUserProfile(id);
+    public ReadUserDto getById(@PathVariable Long id) {
+        return userDtoService.getById(id);
     }
 
     @PostMapping
-    public ReadUserDto createNewUser(@RequestBody @Validated CreateUserDto createUserDto) {
-        return userService.createNewUser(createUserDto);
+    public ReadUserDto create(@RequestBody @Validated CreateUserDto createUserDto) {
+        return userDtoService.create(createUserDto);
     }
 
     @PutMapping("/{id}")
     public ReadUserDto update(@PathVariable Long id, @RequestBody @Validated UpdateUserDto updateUserDto) {
-        return userService.update(id, updateUserDto);
+        return userDtoService.update(id, updateUserDto);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id) {
-        userService.delete(id);
+    public void delete(@PathVariable Long id) {
+        userDtoService.delete(id);
     }
 
     @GetMapping
-    public Page<ReadUserDto> getAll(@PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC,size = 15)
-                                                Pageable pageable) {
-        return userService.findAll(pageable);
+    public Page<ReadUserDto> getAll(UserPageRequest userPageRequest) {
+        return userDtoService.getAll(userPageRequest);
     }
 }
