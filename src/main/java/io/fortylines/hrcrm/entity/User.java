@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Set;
 
 @Data
 @Entity
@@ -32,17 +31,12 @@ public class User implements UserDetails {
 
     private boolean active;
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-    @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role roles;
 
     public boolean isActive() {
         return active;
-    }
-
-    public boolean isAdmin() {
-        return roles.contains(Role.ADMIN);
     }
 
     @Override
