@@ -26,10 +26,9 @@ public class VacancyController {
         return vacancyDtoService.getById(id);
     }
 
-    @PostMapping("/{user_id}")
-    public ReadVacancyDto create(@PathVariable Long user_id,
-                                           @RequestBody @Validated CreateVacancyDto createVacancyDto) {
-        return vacancyDtoService.create(user_id, createVacancyDto);
+    @PostMapping
+    public ReadVacancyDto create(@RequestBody @Validated CreateVacancyDto createVacancyDto) {
+        return vacancyDtoService.create(createVacancyDto);
     }
 
     @DeleteMapping("{id}")

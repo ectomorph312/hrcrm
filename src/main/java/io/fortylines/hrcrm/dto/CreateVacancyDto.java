@@ -20,4 +20,6 @@ public class CreateVacancyDto {
 
     @NotNull
     private List<Competencies> competencies;
+
+    private Long userId;
 }
