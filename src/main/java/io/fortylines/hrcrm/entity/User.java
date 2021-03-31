@@ -29,15 +29,11 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String username;
 
-    private boolean active;
+    private boolean isActive;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
-    private Role roles;
-
-    public boolean isActive() {
-        return active;
-    }
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

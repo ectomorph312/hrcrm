@@ -33,8 +33,8 @@ public class DefaultVacancyDtoService implements VacancyDtoService {
 
     @Override
     public ReadVacancyDto getById(Long id) {
-        Vacancy responseVacancy = vacancyService.getById(id);
-        return vacancyMapper.toReadVacancydto(responseVacancy);
+        Vacancy vacancy = vacancyService.getById(id);
+        return vacancyMapper.toReadVacancydto(vacancy);
     }
 
     @Override
@@ -49,8 +49,8 @@ public class DefaultVacancyDtoService implements VacancyDtoService {
         newVacancy.setAuthor(author);
         newVacancy.setCompetencies(createVacancyDto.getCompetencies());
 
-        Vacancy responseVacancy = vacancyService.create(newVacancy);
-        return vacancyMapper.toReadVacancydto(responseVacancy);
+        Vacancy vacancy = vacancyService.create(newVacancy);
+        return vacancyMapper.toReadVacancydto(vacancy);
     }
 
     @Override
@@ -69,8 +69,8 @@ public class DefaultVacancyDtoService implements VacancyDtoService {
         updateVacancy.setUpdatedAt(LocalDateTime.now());
         updateVacancy.setCompetencies(updateVacancyDto.getCompetencies());
 
-        Vacancy responseVacancy = vacancyService.update(id, updateVacancy);
-        return vacancyMapper.toReadVacancydto(responseVacancy);
+        Vacancy vacancy = vacancyService.update(id, updateVacancy);
+        return vacancyMapper.toReadVacancydto(vacancy);
     }
 
     @Override

@@ -33,7 +33,7 @@ public class DefaultUserService implements UserService {
 
         updateUser.setFirstName(user.getFirstName());
         updateUser.setLastName(user.getLastName());
-        updateUser.setRoles(user.getRoles());
+        updateUser.setRole(user.getRole());
         updateUser.setActive(user.isActive());
 
         return userRepository.save(updateUser);

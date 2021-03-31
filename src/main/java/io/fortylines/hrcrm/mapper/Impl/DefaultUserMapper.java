@@ -14,8 +14,8 @@ public class DefaultUserMapper implements UserMapper {
         ReadUserDto userDto = new ReadUserDto();
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
-        userDto.setActive(user.isActive());
-        userDto.setRole(user.getRoles());
+        userDto.setIsActive(user.isActive());
+        userDto.setRole(user.getRole());
         userDto.setUsername(user.getUsername());
 
         return userDto;

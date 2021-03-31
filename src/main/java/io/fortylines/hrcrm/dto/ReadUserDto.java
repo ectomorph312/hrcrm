@@ -9,6 +9,6 @@ public class ReadUserDto {
     private String firstName;
     private String lastName;
     private String username;
-    private Boolean active;
+    private Boolean isActive;
     private Role role;
 }

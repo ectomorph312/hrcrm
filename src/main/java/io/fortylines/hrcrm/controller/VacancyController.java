@@ -31,7 +31,7 @@ public class VacancyController {
         return vacancyDtoService.create(createVacancyDto);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         vacancyDtoService.delete(id);
     }

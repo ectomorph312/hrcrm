@@ -47,32 +47,32 @@ public class DefaultUserDtoService implements UserDtoService {
         createUser.setLastName(createUserDto.getLastName());
         createUser.setPassword(password);
         createUser.setUsername(username);
-        createUser.setRoles(role);
+        createUser.setRole(role);
         createUser.setActive(true);
 
-        User responseUser = userService.create(createUser);
-        return userMapper.toReadUserDto(responseUser);
+        User user = userService.create(createUser);
+        return userMapper.toReadUserDto(user);
     }
 
     @Override
     public ReadUserDto update(Long id, UpdateUserDto updateUserDto) {
         User updateUser = new User();
-        boolean active = updateUserDto.isActive();
+        Boolean active = updateUserDto.getIsActive();
         Role role = roleService.getById(updateUserDto.getRoleId());
 
         updateUser.setFirstName(updateUserDto.getFirstName());
         updateUser.setLastName(updateUserDto.getLastName());
         updateUser.setActive(active);
-        updateUser.setRoles(role);
+        updateUser.setRole(role);
 
-        User userResponse = userService.update(id, updateUser);
-        return userMapper.toReadUserDto(userResponse);
+        User user = userService.update(id, updateUser);
+        return userMapper.toReadUserDto(user);
     }
 
     @Override
     public ReadUserDto getById(Long id) {
-        User userResponse = userService.getById(id);
-        return userMapper.toReadUserDto(userResponse);
+        User user = userService.getById(id);
+        return userMapper.toReadUserDto(user);
     }
 
     @Override

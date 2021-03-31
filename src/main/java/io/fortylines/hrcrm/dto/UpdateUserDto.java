@@ -13,7 +13,7 @@ public class UpdateUserDto {
     @NotNull
     private String lastName;
 
-    private boolean active;
+    private Boolean isActive;
 
     @NotNull
     private Long roleId;
