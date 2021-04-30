@@ -21,5 +21,21 @@ public class CreateVacancyDto {
     @NotNull
     private List<Competencies> competencies;
 
+    @NotNull
+    private Boolean isOnInstagram;
+
+    @NotNull
+    private Boolean isOnTelegram;
+
+    @NotNull
+    private Boolean isOnJobkg;
+
+    @NotNull
+    private Boolean isOnFacebook;
+
+    @NotNull
+    private Boolean isOnDiesel;
+
+    @NotNull
     private Long userId;
 }

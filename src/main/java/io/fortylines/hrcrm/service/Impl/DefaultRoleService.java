@@ -21,7 +21,6 @@ public class DefaultRoleService implements RoleService {
     @Override
     public Role getById(Long id) {
         return roleRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(
-                "Role not found"
-        ));
+                "Role not found"));
     }
 }

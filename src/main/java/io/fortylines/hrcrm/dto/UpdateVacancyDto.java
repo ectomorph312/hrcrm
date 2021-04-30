@@ -20,4 +20,14 @@ public class UpdateVacancyDto {
 
     @NotNull
     private List<Competencies> competencies;
+
+    private Boolean isOnInstagram;
+
+    private Boolean isOnTelegram;
+
+    private Boolean isOnJobkg;
+
+    private Boolean isOnFacebook;
+
+    private Boolean isOnDiesel;
 }

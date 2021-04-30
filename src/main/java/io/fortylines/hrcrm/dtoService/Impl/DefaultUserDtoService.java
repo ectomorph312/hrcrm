@@ -45,6 +45,7 @@ public class DefaultUserDtoService implements UserDtoService {
         User createUser = new User();
         createUser.setFirstName(createUserDto.getFirstName());
         createUser.setLastName(createUserDto.getLastName());
+        createUser.setEmail(createUserDto.getEmail().toLowerCase());
         createUser.setPassword(password);
         createUser.setUsername(username);
         createUser.setRole(role);
@@ -62,6 +63,7 @@ public class DefaultUserDtoService implements UserDtoService {
 
         updateUser.setFirstName(updateUserDto.getFirstName());
         updateUser.setLastName(updateUserDto.getLastName());
+        updateUser.setEmail(updateUserDto.getEmail());
         updateUser.setActive(active);
         updateUser.setRole(role);
 

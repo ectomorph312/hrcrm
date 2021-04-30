@@ -23,8 +23,7 @@ public class DefaultVacancyService implements VacancyService {
     @Override
     public Vacancy getById(Long id) {
         return vacancyRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(
-                "Vacancy with id: " + id + " not found"
-        ));
+                "Vacancy with id: " + id + " not found"));
     }
 
     @Override
@@ -47,6 +46,11 @@ public class DefaultVacancyService implements VacancyService {
         updateVacancy.setRequirements(vacancy.getRequirements());
         updateVacancy.setUpdatedAt(vacancy.getUpdatedAt());
         updateVacancy.setCompetencies(vacancy.getCompetencies());
+        updateVacancy.setOnInstagram(vacancy.isOnInstagram());
+        updateVacancy.setOnTelegram(vacancy.isOnTelegram());
+        updateVacancy.setOnJobkg(vacancy.isOnJobkg());
+        updateVacancy.setOnFacebook(vacancy.isOnFacebook());
+        updateVacancy.setOnDiesel(vacancy.isOnDiesel());
 
         return vacancyRepository.save(updateVacancy);
     }

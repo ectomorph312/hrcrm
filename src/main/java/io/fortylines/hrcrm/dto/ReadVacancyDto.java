@@ -14,4 +14,9 @@ public class ReadVacancyDto {
     private List<Competencies> competencies;
     private LocalDateTime createdAt;
     private String author;
+    private Boolean isOnInstagram;
+    private Boolean isOnTelegram;
+    private Boolean isOnJobkg;
+    private Boolean isOnFacebook;
+    private Boolean isOnDiesel;
 }

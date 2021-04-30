@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 
 @Service
 public class DefaultUserService implements UserService {
@@ -33,10 +34,16 @@ public class DefaultUserService implements UserService {
 
         updateUser.setFirstName(user.getFirstName());
         updateUser.setLastName(user.getLastName());
+        updateUser.setEmail(user.getEmail());
         updateUser.setRole(user.getRole());
         updateUser.setActive(user.isActive());
 
         return userRepository.save(updateUser);
+    }
+
+    @Override
+    public List<String> getAllEmailsByRoleId(Long roleId) {
+        return userRepository.retrieveAllEmailsByRoleId(roleId);
     }
 
     @Override

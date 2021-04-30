@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -23,6 +24,10 @@ public class User implements UserDetails {
 
     @NotNull
     private String lastName;
+
+    @NotNull
+    @Email
+    private String email;
 
     @NotNull
     private String password;
