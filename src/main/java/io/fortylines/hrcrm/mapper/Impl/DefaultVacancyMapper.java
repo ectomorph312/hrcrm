@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class DefaultVacancyMapper implements VacancyMapper {
 
     @Override
-    public ReadVacancyDto toReadVacancydto(Vacancy vacancy) {
+    public ReadVacancyDto toReadVacancyDto(Vacancy vacancy) {
         ReadVacancyDto readVacancyDto = new ReadVacancyDto();
 
         readVacancyDto.setTitle(vacancy.getTitle());
@@ -19,12 +19,17 @@ public class DefaultVacancyMapper implements VacancyMapper {
         readVacancyDto.setCompetencies(vacancy.getCompetencies());
         readVacancyDto.setCreatedAt(vacancy.getCreatedAt());
         readVacancyDto.setAuthor(vacancy.getAuthorName());
+        readVacancyDto.setIsOnInstagram(vacancy.isOnInstagram());
+        readVacancyDto.setIsOnTelegram(vacancy.isOnTelegram());
+        readVacancyDto.setIsOnJobkg(vacancy.isOnJobkg());
+        readVacancyDto.setIsOnFacebook(vacancy.isOnFacebook());
+        readVacancyDto.setIsOnDiesel(vacancy.isOnDiesel());
 
         return readVacancyDto;
     }
 
     @Override
     public Page<ReadVacancyDto> toReadVacanciesDtoList(Page<Vacancy> vacancies) {
-        return vacancies.map(this::toReadVacancydto);
+        return vacancies.map(this::toReadVacancyDto);
     }
 }

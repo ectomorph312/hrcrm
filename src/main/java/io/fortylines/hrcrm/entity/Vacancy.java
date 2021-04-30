@@ -37,6 +37,21 @@ public class Vacancy {
     @DateTimeFormat(pattern = "yyyy-MM-dd-'T'HH:mm")
     private LocalDateTime updatedAt;
 
+    @Column(name = "is_on_instagram")
+    private boolean isOnInstagram;
+
+    @Column(name = "is_on_telegram")
+    private boolean isOnTelegram;
+
+    @Column(name = "is_on_jobkg")
+    private boolean isOnJobkg;
+
+    @Column(name = "is_on_facebook")
+    private boolean isOnFacebook;
+
+    @Column(name = "is_on_diesel")
+    private boolean isOnDiesel;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;

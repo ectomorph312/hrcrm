@@ -45,7 +45,7 @@ public class VacancyController {
 
     @PutMapping("/{id}")
     public ReadVacancyDto update(@PathVariable Long id,
-                                        @RequestBody @Validated UpdateVacancyDto updateVacancyDto) {
+                                 @RequestBody @Validated UpdateVacancyDto updateVacancyDto) {
         return vacancyDtoService.update(id, updateVacancyDto);
     }
 }

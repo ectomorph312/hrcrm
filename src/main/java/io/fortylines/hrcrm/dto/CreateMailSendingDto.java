@@ -5,18 +5,13 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class UpdateUserDto {
+public class CreateMailSendingDto {
 
     @NotNull
-    private String firstName;
+    private String subject;
 
     @NotNull
-    private String lastName;
-
-    @NotNull
-    private String email;
-
-    private Boolean isActive;
+    private String text;
 
     @NotNull
     private Long roleId;

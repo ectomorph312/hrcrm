@@ -34,7 +34,7 @@ public class DefaultVacancyDtoService implements VacancyDtoService {
     @Override
     public ReadVacancyDto getById(Long id) {
         Vacancy vacancy = vacancyService.getById(id);
-        return vacancyMapper.toReadVacancydto(vacancy);
+        return vacancyMapper.toReadVacancyDto(vacancy);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class DefaultVacancyDtoService implements VacancyDtoService {
         newVacancy.setCompetencies(createVacancyDto.getCompetencies());
 
         Vacancy vacancy = vacancyService.create(newVacancy);
-        return vacancyMapper.toReadVacancydto(vacancy);
+        return vacancyMapper.toReadVacancyDto(vacancy);
     }
 
     @Override
@@ -68,9 +68,14 @@ public class DefaultVacancyDtoService implements VacancyDtoService {
         updateVacancy.setRequirements(updateVacancyDto.getRequirements());
         updateVacancy.setUpdatedAt(LocalDateTime.now());
         updateVacancy.setCompetencies(updateVacancyDto.getCompetencies());
+        updateVacancy.setOnInstagram(updateVacancyDto.getIsOnInstagram());
+        updateVacancy.setOnTelegram(updateVacancyDto.getIsOnTelegram());
+        updateVacancy.setOnJobkg(updateVacancyDto.getIsOnJobkg());
+        updateVacancy.setOnFacebook(updateVacancyDto.getIsOnFacebook());
+        updateVacancy.setOnDiesel(updateVacancyDto.getIsOnDiesel());
 
         Vacancy vacancy = vacancyService.update(id, updateVacancy);
-        return vacancyMapper.toReadVacancydto(vacancy);
+        return vacancyMapper.toReadVacancyDto(vacancy);
     }
 
     @Override

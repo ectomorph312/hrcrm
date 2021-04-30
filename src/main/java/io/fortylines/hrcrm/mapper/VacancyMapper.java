@@ -5,6 +5,6 @@ import io.fortylines.hrcrm.entity.Vacancy;
 import org.springframework.data.domain.Page;
 
 public interface VacancyMapper {
-    ReadVacancyDto toReadVacancydto(Vacancy vacancy);
+    ReadVacancyDto toReadVacancyDto(Vacancy vacancy);
     Page<ReadVacancyDto> toReadVacanciesDtoList(Page<Vacancy> vacancies);
 }
